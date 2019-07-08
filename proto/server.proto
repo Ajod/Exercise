@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package proto;
+
+import "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api/annotations.proto";
+
+service CommandRunner {
+    rpc Sub (Command) returns (Result);
+    rpc Sleep (Command) returns (Result);
+    rpc Compute (Command) returns (Result);
+}
+
+message Arg {
+    string name = 1;
+    int64 value = 2;
+}
+
+message Command {
+    string command = 1;
+    repeated Arg args = 2;
+}
+
+message Result {
+    string command = 1;
+    repeated Arg args = 2;
+    repeated Arg results = 3;
+}
