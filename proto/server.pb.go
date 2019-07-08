@@ -6,12 +6,13 @@ package proto
 import (
 	context "context"
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -25,6 +26,76 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type ComputeParam struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ComputeParam) Reset()         { *m = ComputeParam{} }
+func (m *ComputeParam) String() string { return proto.CompactTextString(m) }
+func (*ComputeParam) ProtoMessage()    {}
+func (*ComputeParam) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ad098daeda4239f7, []int{0}
+}
+
+func (m *ComputeParam) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ComputeParam.Unmarshal(m, b)
+}
+func (m *ComputeParam) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ComputeParam.Marshal(b, m, deterministic)
+}
+func (m *ComputeParam) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ComputeParam.Merge(m, src)
+}
+func (m *ComputeParam) XXX_Size() int {
+	return xxx_messageInfo_ComputeParam.Size(m)
+}
+func (m *ComputeParam) XXX_DiscardUnknown() {
+	xxx_messageInfo_ComputeParam.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ComputeParam proto.InternalMessageInfo
+
+type Value struct {
+	Value                int64    `protobuf:"varint,1,opt,name=value,proto3" json:"value,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Value) Reset()         { *m = Value{} }
+func (m *Value) String() string { return proto.CompactTextString(m) }
+func (*Value) ProtoMessage()    {}
+func (*Value) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ad098daeda4239f7, []int{1}
+}
+
+func (m *Value) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Value.Unmarshal(m, b)
+}
+func (m *Value) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Value.Marshal(b, m, deterministic)
+}
+func (m *Value) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Value.Merge(m, src)
+}
+func (m *Value) XXX_Size() int {
+	return xxx_messageInfo_Value.Size(m)
+}
+func (m *Value) XXX_DiscardUnknown() {
+	xxx_messageInfo_Value.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Value proto.InternalMessageInfo
+
+func (m *Value) GetValue() int64 {
+	if m != nil {
+		return m.Value
+	}
+	return 0
+}
+
 type Arg struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Value                int64    `protobuf:"varint,2,opt,name=value,proto3" json:"value,omitempty"`
@@ -37,7 +108,7 @@ func (m *Arg) Reset()         { *m = Arg{} }
 func (m *Arg) String() string { return proto.CompactTextString(m) }
 func (*Arg) ProtoMessage()    {}
 func (*Arg) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad098daeda4239f7, []int{0}
+	return fileDescriptor_ad098daeda4239f7, []int{2}
 }
 
 func (m *Arg) XXX_Unmarshal(b []byte) error {
@@ -84,7 +155,7 @@ func (m *Command) Reset()         { *m = Command{} }
 func (m *Command) String() string { return proto.CompactTextString(m) }
 func (*Command) ProtoMessage()    {}
 func (*Command) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad098daeda4239f7, []int{1}
+	return fileDescriptor_ad098daeda4239f7, []int{3}
 }
 
 func (m *Command) XXX_Unmarshal(b []byte) error {
@@ -132,7 +203,7 @@ func (m *Result) Reset()         { *m = Result{} }
 func (m *Result) String() string { return proto.CompactTextString(m) }
 func (*Result) ProtoMessage()    {}
 func (*Result) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad098daeda4239f7, []int{2}
+	return fileDescriptor_ad098daeda4239f7, []int{4}
 }
 
 func (m *Result) XXX_Unmarshal(b []byte) error {
@@ -175,6 +246,8 @@ func (m *Result) GetResults() []*Arg {
 }
 
 func init() {
+	proto.RegisterType((*ComputeParam)(nil), "proto.ComputeParam")
+	proto.RegisterType((*Value)(nil), "proto.Value")
 	proto.RegisterType((*Arg)(nil), "proto.Arg")
 	proto.RegisterType((*Command)(nil), "proto.Command")
 	proto.RegisterType((*Result)(nil), "proto.Result")
@@ -183,24 +256,26 @@ func init() {
 func init() { proto.RegisterFile("server.proto", fileDescriptor_ad098daeda4239f7) }
 
 var fileDescriptor_ad098daeda4239f7 = []byte{
-	// 271 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x90, 0xbf, 0x6a, 0xc3, 0x30,
-	0x10, 0x87, 0x71, 0x9c, 0x3f, 0xf4, 0xda, 0x74, 0x10, 0x1d, 0x4c, 0x86, 0x62, 0x4c, 0x28, 0x5e,
-	0x6a, 0x41, 0xfa, 0x04, 0x21, 0x6f, 0xe0, 0x6c, 0x5d, 0x8a, 0xec, 0x1c, 0xb2, 0xc1, 0x96, 0xc4,
-	0x49, 0x4a, 0xf1, 0x13, 0xf4, 0xb5, 0x0b, 0xb2, 0x32, 0x75, 0x08, 0x74, 0xd2, 0xef, 0xd3, 0x7d,
-	0xba, 0x3b, 0x04, 0x4f, 0x16, 0xe9, 0x8a, 0x54, 0x19, 0xd2, 0x4e, 0xb3, 0x55, 0x38, 0x76, 0x9f,
-	0xb2, 0x77, 0x9d, 0x6f, 0xaa, 0x56, 0x8f, 0x5c, 0x92, 0x69, 0xdf, 0xb1, 0xd5, 0x76, 0xb2, 0x0e,
-	0x23, 0x4a, 0xe1, 0xf0, 0x5b, 0x4c, 0xdc, 0x75, 0x3d, 0x5d, 0xbe, 0x8c, 0x20, 0x37, 0x71, 0xa9,
-	0xb5, 0x1c, 0x50, 0x98, 0xde, 0xc6, 0xc8, 0x85, 0xe9, 0xb9, 0x50, 0x4a, 0x3b, 0xe1, 0x7a, 0xad,
-	0xec, 0x3c, 0xa2, 0xe0, 0x90, 0x1e, 0x49, 0x32, 0x06, 0x4b, 0x25, 0x46, 0xcc, 0x92, 0x3c, 0x29,
-	0x1f, 0xea, 0x90, 0xd9, 0x0b, 0xac, 0xae, 0x62, 0xf0, 0x98, 0x2d, 0xf2, 0xa4, 0x4c, 0xeb, 0x19,
-	0x8a, 0x13, 0x6c, 0x4e, 0x7a, 0x1c, 0x85, 0xba, 0xb0, 0x0c, 0x36, 0xed, 0x1c, 0xe3, 0xbb, 0x1b,
-	0xb2, 0x57, 0x58, 0x0a, 0x92, 0x36, 0x5b, 0xe4, 0x69, 0xf9, 0x78, 0x80, 0x79, 0x56, 0x75, 0x24,
-	0x59, 0x87, 0xfb, 0xa2, 0x83, 0x75, 0x8d, 0xd6, 0x0f, 0xee, 0xff, 0x3d, 0xd8, 0x1e, 0x36, 0x14,
-	0x7a, 0xd8, 0x2c, 0xfd, 0xa3, 0xdc, 0x4a, 0x87, 0x9f, 0x04, 0xb6, 0x71, 0xdf, 0xda, 0x2b, 0x85,
-	0xc4, 0xf6, 0x90, 0x9e, 0x7d, 0xc3, 0x9e, 0xa3, 0x1d, 0x8b, 0xbb, 0x6d, 0xe4, 0xb8, 0xd7, 0x1b,
-	0xac, 0xce, 0x03, 0xa2, 0xb9, 0xe7, 0x95, 0xe1, 0x3b, 0x8c, 0x77, 0x78, 0xc7, 0x6c, 0xd6, 0x81,
-	0x3e, 0x7e, 0x03, 0x00, 0x00, 0xff, 0xff, 0x00, 0xe8, 0x8d, 0xaa, 0xe3, 0x01, 0x00, 0x00,
+	// 297 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x50, 0xc1, 0x6a, 0xc2, 0x40,
+	0x14, 0x44, 0x63, 0x94, 0xbe, 0x6a, 0x0f, 0xdb, 0x1e, 0x82, 0xd0, 0x22, 0xc1, 0x83, 0x17, 0x0d,
+	0xd8, 0x2f, 0x10, 0x7f, 0xa0, 0x44, 0xe8, 0xa1, 0x97, 0xf2, 0x8c, 0x8f, 0x35, 0x90, 0xec, 0x2e,
+	0x6f, 0x37, 0x96, 0xfc, 0x41, 0x3f, 0xbb, 0xb8, 0x59, 0xa9, 0xb4, 0xd0, 0x43, 0x4f, 0x99, 0xc9,
+	0xcc, 0xbc, 0x1d, 0x06, 0xc6, 0x96, 0xf8, 0x44, 0xbc, 0x32, 0xac, 0x9d, 0x16, 0xb1, 0xff, 0x4c,
+	0xdf, 0x64, 0xe9, 0x8e, 0xcd, 0x7e, 0x55, 0xe8, 0x3a, 0x93, 0x6c, 0x8a, 0x25, 0x15, 0xda, 0xb6,
+	0xd6, 0x51, 0xa0, 0x12, 0x1d, 0x7d, 0x60, 0x9b, 0xb9, 0x63, 0xc9, 0x87, 0x77, 0x83, 0xec, 0xda,
+	0x4c, 0x6a, 0x2d, 0x2b, 0x42, 0x53, 0xda, 0x00, 0x33, 0x34, 0x65, 0x86, 0x4a, 0x69, 0x87, 0xae,
+	0xd4, 0xca, 0x76, 0x4f, 0xa4, 0x77, 0x30, 0xde, 0xea, 0xda, 0x34, 0x8e, 0x5e, 0x90, 0xb1, 0x4e,
+	0x1f, 0x21, 0x7e, 0xc5, 0xaa, 0x21, 0xf1, 0x00, 0xf1, 0xe9, 0x0c, 0x92, 0xde, 0xac, 0xb7, 0x88,
+	0xf2, 0x8e, 0xa4, 0x19, 0x44, 0x1b, 0x96, 0x42, 0xc0, 0x40, 0x61, 0xdd, 0x69, 0x37, 0xb9, 0xc7,
+	0xdf, 0x81, 0xfe, 0x75, 0x60, 0x0b, 0xa3, 0xad, 0xae, 0x6b, 0x54, 0x07, 0x91, 0xc0, 0xa8, 0xe8,
+	0x60, 0xc8, 0x5d, 0xa8, 0x78, 0x82, 0x01, 0xb2, 0xb4, 0x49, 0x7f, 0x16, 0x2d, 0x6e, 0xd7, 0xd0,
+	0x55, 0x5b, 0x6d, 0x58, 0xe6, 0xfe, 0x7f, 0x7a, 0x84, 0x61, 0x4e, 0xb6, 0xa9, 0xdc, 0xff, 0x6f,
+	0x88, 0x39, 0x8c, 0xd8, 0xdf, 0xb0, 0x49, 0xf4, 0xcb, 0x72, 0x91, 0xd6, 0x9f, 0x3d, 0x98, 0x84,
+	0xbe, 0x79, 0xa3, 0x14, 0xb1, 0x48, 0x21, 0xda, 0x35, 0x7b, 0x31, 0x0e, 0x6e, 0x3f, 0xce, 0x74,
+	0x12, 0x58, 0x68, 0x35, 0x87, 0x78, 0x57, 0x11, 0x99, 0xbf, 0x5d, 0x4b, 0x3f, 0xc5, 0x79, 0x6a,
+	0x71, 0x1f, 0x94, 0xeb, 0xe9, 0x7f, 0xd8, 0xf7, 0x43, 0xcf, 0x9e, 0xbf, 0x02, 0x00, 0x00, 0xff,
+	0xff, 0xcf, 0x68, 0x94, 0x8c, 0x13, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -215,9 +290,9 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CommandRunnerClient interface {
-	Sub(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Result, error)
-	Sleep(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Result, error)
-	Compute(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Result, error)
+	Sub(ctx context.Context, in *Value, opts ...grpc.CallOption) (*Result, error)
+	Sleep(ctx context.Context, in *Value, opts ...grpc.CallOption) (*Result, error)
+	Compute(ctx context.Context, in *ComputeParam, opts ...grpc.CallOption) (*Result, error)
 }
 
 type commandRunnerClient struct {
@@ -228,7 +303,7 @@ func NewCommandRunnerClient(cc *grpc.ClientConn) CommandRunnerClient {
 	return &commandRunnerClient{cc}
 }
 
-func (c *commandRunnerClient) Sub(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Result, error) {
+func (c *commandRunnerClient) Sub(ctx context.Context, in *Value, opts ...grpc.CallOption) (*Result, error) {
 	out := new(Result)
 	err := c.cc.Invoke(ctx, "/proto.CommandRunner/Sub", in, out, opts...)
 	if err != nil {
@@ -237,7 +312,7 @@ func (c *commandRunnerClient) Sub(ctx context.Context, in *Command, opts ...grpc
 	return out, nil
 }
 
-func (c *commandRunnerClient) Sleep(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Result, error) {
+func (c *commandRunnerClient) Sleep(ctx context.Context, in *Value, opts ...grpc.CallOption) (*Result, error) {
 	out := new(Result)
 	err := c.cc.Invoke(ctx, "/proto.CommandRunner/Sleep", in, out, opts...)
 	if err != nil {
@@ -246,7 +321,7 @@ func (c *commandRunnerClient) Sleep(ctx context.Context, in *Command, opts ...gr
 	return out, nil
 }
 
-func (c *commandRunnerClient) Compute(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Result, error) {
+func (c *commandRunnerClient) Compute(ctx context.Context, in *ComputeParam, opts ...grpc.CallOption) (*Result, error) {
 	out := new(Result)
 	err := c.cc.Invoke(ctx, "/proto.CommandRunner/Compute", in, out, opts...)
 	if err != nil {
@@ -257,22 +332,22 @@ func (c *commandRunnerClient) Compute(ctx context.Context, in *Command, opts ...
 
 // CommandRunnerServer is the server API for CommandRunner service.
 type CommandRunnerServer interface {
-	Sub(context.Context, *Command) (*Result, error)
-	Sleep(context.Context, *Command) (*Result, error)
-	Compute(context.Context, *Command) (*Result, error)
+	Sub(context.Context, *Value) (*Result, error)
+	Sleep(context.Context, *Value) (*Result, error)
+	Compute(context.Context, *ComputeParam) (*Result, error)
 }
 
 // UnimplementedCommandRunnerServer can be embedded to have forward compatible implementations.
 type UnimplementedCommandRunnerServer struct {
 }
 
-func (*UnimplementedCommandRunnerServer) Sub(ctx context.Context, req *Command) (*Result, error) {
+func (*UnimplementedCommandRunnerServer) Sub(ctx context.Context, req *Value) (*Result, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Sub not implemented")
 }
-func (*UnimplementedCommandRunnerServer) Sleep(ctx context.Context, req *Command) (*Result, error) {
+func (*UnimplementedCommandRunnerServer) Sleep(ctx context.Context, req *Value) (*Result, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Sleep not implemented")
 }
-func (*UnimplementedCommandRunnerServer) Compute(ctx context.Context, req *Command) (*Result, error) {
+func (*UnimplementedCommandRunnerServer) Compute(ctx context.Context, req *ComputeParam) (*Result, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Compute not implemented")
 }
 
@@ -281,7 +356,7 @@ func RegisterCommandRunnerServer(s *grpc.Server, srv CommandRunnerServer) {
 }
 
 func _CommandRunner_Sub_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Command)
+	in := new(Value)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -293,13 +368,13 @@ func _CommandRunner_Sub_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/proto.CommandRunner/Sub",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandRunnerServer).Sub(ctx, req.(*Command))
+		return srv.(CommandRunnerServer).Sub(ctx, req.(*Value))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _CommandRunner_Sleep_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Command)
+	in := new(Value)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -311,13 +386,13 @@ func _CommandRunner_Sleep_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/proto.CommandRunner/Sleep",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandRunnerServer).Sleep(ctx, req.(*Command))
+		return srv.(CommandRunnerServer).Sleep(ctx, req.(*Value))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _CommandRunner_Compute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Command)
+	in := new(ComputeParam)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -329,7 +404,7 @@ func _CommandRunner_Compute_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/proto.CommandRunner/Compute",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandRunnerServer).Compute(ctx, req.(*Command))
+		return srv.(CommandRunnerServer).Compute(ctx, req.(*ComputeParam))
 	}
 	return interceptor(ctx, in, info, handler)
 }

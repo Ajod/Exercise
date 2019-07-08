@@ -5,9 +5,15 @@ package proto;
 import "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api/annotations.proto";
 
 service CommandRunner {
-    rpc Sub (Command) returns (Result);
-    rpc Sleep (Command) returns (Result);
-    rpc Compute (Command) returns (Result);
+    rpc Sub (Value) returns (Result);
+    rpc Sleep (Value) returns (Result);
+    rpc Compute (ComputeParam) returns (Result);
+}
+
+message ComputeParam {}
+
+message Value {
+    int64 value = 1;
 }
 
 message Arg {
