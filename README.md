@@ -10,3 +10,9 @@
 2. Generate the go code by running codegen.sh
 3. Implement the method in server.go
 4. Add the call to the switch in client.go
+
+## Tests
+
+You can test the program easily by using this postman collection
+
+https://www.getpostman.com/collections/f382817a708ea273e980
