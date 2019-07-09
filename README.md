@@ -13,6 +13,4 @@
 
 ## Tests
 
-You can test the program easily by using this postman collection
-
-https://www.getpostman.com/collections/f382817a708ea273e980
+You can test the program easily by using the postman collection provided in the root directory.

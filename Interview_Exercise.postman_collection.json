@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "21f6a33c-a03e-456b-b902-007552d47a4a",
+		"name": "Interview_Exercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SubRequest 55",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\":\"sub\",\n\t\"args\":[{\n\t\t\"name\":\"op\",\n\t\t\"value\":55\n\t}]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4242/executes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4242",
+					"path": [
+						"executes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SubRequest -42",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\":\"sub\",\n\t\"args\":[{\n\t\t\"name\":\"op\",\n\t\t\"value\":-42\n\t}]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4242/executes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4242",
+					"path": [
+						"executes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SubRequest 29",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\":\"sub\",\n\t\"args\":[{\n\t\t\"name\":\"op\",\n\t\t\"value\":29\n\t}]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4242/executes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4242",
+					"path": [
+						"executes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ComputeRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\":\"compute\",\n\t\"args\":[]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4242/executes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4242",
+					"path": [
+						"executes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SleepRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\":\"sleep\",\n\t\"args\":[{\n\t\t\"name\":\"duration\",\n\t\t\"value\":10000\n\t}]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4242/executes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4242",
+					"path": [
+						"executes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

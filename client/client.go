@@ -63,7 +63,7 @@ func executes(writer http.ResponseWriter, req *http.Request) {
 	case "sleep":
 		res, err = client.Sleep(context.Background(), &pb.Value{Value: cr.Args[0].Value})
 	default:
-
+		fmt.Println("Unrecognized command: ", cr.Command)
 	}
 	if err != nil {
 		panic(err)
